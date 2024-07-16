@@ -1,6 +1,5 @@
 from concurrent.futures import ThreadPoolExecutor
 from urllib.request import urlopen
-import time
 import os
 
 # Downloads image from URL and saves it locally
@@ -31,8 +30,6 @@ def main():
     os.makedirs("images", exist_ok=True)
 
     os.chdir("images")
-
-    print(os.getcwd())
 
     with ThreadPoolExecutor() as executor:
         executor.map(download_image, urls)
