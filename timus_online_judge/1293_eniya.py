@@ -1,4 +1,7 @@
 """"
+
+Problem Description
+--------------------
 It’s restless now on the slips of the intergalactic port’s sixth dock of planet of Torn. 
 No longer then in a month the reconstruction of the small ironclad corvette “Eniya” will be finished. 
 And again this battle ship and its brave team would have to struggle for the control over 
@@ -22,4 +25,46 @@ Output the weight of thorium sulphide in nanogramms needed for the processing.
 Sample
 -----
 input: 5 2 3 output: 60
+
+Strategy
+--------
+calculate (N)(A)(B)(2)
+
+Run (powershell)
+----------------
+@"
+5 2 3
+"@ | python 1293_eniya.py
+
 """
+
+import sys
+
+
+def process(tokens):
+    
+    token_ints = [int(x) for x in tokens]
+
+    result = 1
+
+    for token_int in token_ints:
+        result *= token_int
+    
+    # Multiply by 2 to account for both sides of panel
+    return result * 2
+
+def main():
+     
+    tokens = sys.stdin.read().split()
+
+    result = process(tokens)
+
+    print(result)
+
+    return result
+
+if __name__ == "__main__":
+    
+    main()
+  
+
