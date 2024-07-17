@@ -24,7 +24,8 @@ def main():
         'https://upload.wikimedia.org/wikipedia/commons/4/48/Python_Regius.jpg',
         'https://upload.wikimedia.org/wikipedia/commons/d/d3/Baby_carpet_python_caudal_luring.jpg',
         'https://upload.wikimedia.org/wikipedia/commons/f/f0/Rock_python_pratik.JPG',
-        'https://upload.wikimedia.org/wikipedia/commons/0/07/Dulip_Wilpattu_Python1.jpg']
+        'https://upload.wikimedia.org/wikipedia/commons/0/07/Dulip_Wilpattu_Python1.jpg',
+        'https://wrong.url.path']
 
     
     os.makedirs("images", exist_ok=True)
