@@ -17,33 +17,36 @@ URLS = [
 
 def process_file(url):
 
-    # Point to download directory
+    # Make destination folder to hold ZIP and member files
     destination_folder = os.path.join(os.getcwd(), DOWNLOAD_DIR)
 
-    # Get file name from url
+    # Get ZIP file name from url
     zip_filename = os.path.basename(url)
 
-    # Final destination path requires filename
-    destination_path = os.path.join(destination_folder, zip_filename)
+    # Point to where ZIP file will be saved (incl filename)
+    destination_filename = os.path.join(destination_folder, zip_filename)
 
     try:
         # Download file
-        urllib.request.urlretrieve(url, destination_path)
-        print(f"{zip_filename} retrieved from {url}\n")
-    except urllib.error.HTTPError as e :
-        print(f"HTTPError: {url} {e.reason}")
+        urllib.request.urlretrieve(url, destination_filename)
 
-    # TODO
-    # unzip file
-    # delete original .zip file
+        # Extract all members of zip file
+        with zipfile.ZipFile(destination_filename, mode="r") as archive:
+            archive.extractall(destination_folder)
+
+        os.remove(destination_filename)
+    
+    except Exception as e:
+        print(f"{e}")
+
 
 def main():
 
-    # Create directory and move to it for downloading
+    # Create directory for urllib
     os.makedirs(DOWNLOAD_DIR, exist_ok=True)
 
-    for url in URLS:
-        process_file(url)
+    with ThreadPoolExecutor() as executor:
+        executor.map(process_file, URLS) 
 
 
 if __name__ == "__main__":
