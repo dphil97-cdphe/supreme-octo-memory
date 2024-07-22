@@ -40,16 +40,10 @@ def process_file(url):
         print(f"{e}")
 
 
-def main():
-
+if __name__ == "__main__":
+    
     # Create directory for urllib
     os.makedirs(DOWNLOAD_DIR, exist_ok=True)
 
     with ThreadPoolExecutor() as executor:
-        executor.map(process_file, URLS) 
-
-
-if __name__ == "__main__":
-    main()
-
-
+        executor.map(process_file, URLS)
