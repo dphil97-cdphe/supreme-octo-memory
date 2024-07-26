@@ -83,7 +83,6 @@ def process_file(url):
 
        extract_and_delete(destination_filename, destination_folder)
 
-
 if __name__ == "__main__":
     
     # Create directory for urllib
