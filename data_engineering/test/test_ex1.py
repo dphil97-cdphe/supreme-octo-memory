@@ -1,8 +1,12 @@
 # tests/test_download_1.py
 
 import unittest
-from pathlib import Path
-from ex_1_download.ex_1_download import is_valid_url, create_paths
+
+import sys
+sys.path.append("..")
+
+from src.ex1 import is_valid_url
+
 
 """
 Each class tests a function
@@ -20,17 +24,11 @@ class TestIsValidUrl(unittest.TestCase):
     def test_invalid_url(self):
         result = is_valid_url(INVALID_URL)
         self.assertFalse(result)
-
-class TestCreatePaths(unittest.TestCase):
-    pass
-
-class Test
         
 
 def suite():
     suite = unittest.TestSuite()
     suite.addTest(unittest.makeSuite(TestIsValidUrl))
-    suite.addTest(unittest.makeSuite(TestCreatePaths))
     return suite
 
 if __name__ == "__main__":

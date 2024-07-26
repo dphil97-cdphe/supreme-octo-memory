@@ -30,10 +30,14 @@ output: 6 3
 """
 import sys
 
+def read_from_stdin():
+
+	return sys.stdin.read().split()
+
 def process(tokens):
 
-	cans_shot_by_harry = tokens[0]
-	cans_shot_by_larry = tokens[1]
+	cans_shot_by_harry = int(tokens[0])
+	cans_shot_by_larry = int(tokens[1])
 
 	total_cans = cans_shot_by_harry + cans_shot_by_larry - 1
 
@@ -41,16 +45,14 @@ def process(tokens):
 
 	not_shot_by_larry = total_cans - cans_shot_by_larry
 
-	return not_shot_by_harry, not_shot_by_larry
+	return f"{not_shot_by_harry} {not_shot_by_larry}"
 
 
 def main():
 
-	tokens = sys.stdin.read().split()
+	tokens = read_from_stdin()
 
 	result = process(tokens)
-
-	print(result)
 
 	return result
 
